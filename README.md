@@ -1,27 +1,31 @@
 # API Consulta CNPJ em Ruby (apiconsultacnpj.com.br)
 
-### Consulta dados do CNPJ
+### Consultar dados de um determinado CNPJ
 ```ruby
-require 'faraday'
+require 'net/http'
+require 'uri'
 
-r = Faraday.get("https://api-publica.speedio.com.br/buscarcnpj?cnpj=00000000000191")
+uri = URI.parse("https://api-publica.speedio.com.br/buscarcnpj?cnpj=00000000000191")
+r = Net::HTTP.get_response(uri)
 puts r.body
 ```
 
-### Consulta quantas empresas tem no CEP
+### Consultar quantas empresas existem em um determinado CEP
 ```ruby
-require 'faraday'
+require 'net/http'
+require 'uri'
 
-r = Faraday.get("https://api-publica.speedio.com.br/buscar-atividade-location-distance?atividade=tecnologia&location=01009-907&distance=5")
+uri = URI.parse("https://api-publica.speedio.com.br/buscar-atividade-location-distance?atividade=tecnologia&location=01009-907&distance=5")
+r = Net::HTTP.get_response(uri)
 puts r.body
 ```
 
-### Consulta a idade média do setor
+### Consultar a idade média de vida de um determinado setor
 ```ruby
-require 'faraday'
+require 'net/http'
+require 'uri'
 
-r = Faraday.get("https://api-publica.speedio.com.br/buscar-atividade-idade-media?atividade=mercado&location=SP")
+uri = URI.parse("https://api-publica.speedio.com.br/buscar-atividade-idade-media?atividade=mercado&location=SP")
+r = Net::HTTP.get_response(uri)
 puts r.body
 ```
-
-
